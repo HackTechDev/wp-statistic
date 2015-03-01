@@ -73,7 +73,7 @@ add_action('wp_head', 'addHeader');
 
 // Add settings link on plugin page
 function wpstatistic_settings_link($links) { 
-        $settings_link = '<a href="options-general.php?page=wpstatistic.php">Paramater</a>'; 
+        $settings_link = '<a href="options-general.php?page=wpstatistic.php">Paramètre</a>'; 
         array_unshift($links, $settings_link); 
         return $links; 
 }
