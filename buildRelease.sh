@@ -2,5 +2,5 @@
 
 cd ..
 rm WPStatistic.zip
-zip -r WPStatistic.zip WP-Statistic -x *.git*
-cd WP-Statistic
+zip -r WPStatistic.zip WordpressStatistic -x *.git*
+cd WordpressStatistic
