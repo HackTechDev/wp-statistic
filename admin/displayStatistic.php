@@ -13,8 +13,9 @@ $rows = $wpdb->get_results("
 <div class="wrap">
 <h2>Statistic</h2>
 <?php
-foreach ($rows as $row ){
-    echo $row->nbPost . " " . $row->datePost . "<br/>";
+foreach ($rows as $row) {
+    echo $row->datePost . " ";
+    echo $row->nbPost . "<br/>";
 }
 ?>
 </div>
