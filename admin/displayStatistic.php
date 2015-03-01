@@ -2,9 +2,10 @@
 function displayStatistic() {
 global $wpdb;
 $rows = $wpdb->get_results("
-                    SELECT post_title, post_date 
-                    FROM wp_posts
-                    WHERE post_type = 'post'
+    SELECT COUNT(*) AS nbPost, DATE_FORMAT(`post_date` , '%d/%m/%Y') AS datePost
+    FROM wp_posts
+    WHERE post_type = 'post'
+    GROUP BY DATE(post_date)
                     ");
 
 ?>
@@ -13,7 +14,7 @@ $rows = $wpdb->get_results("
 <h2>Statistic</h2>
 <?php
 foreach ($rows as $row ){
-    echo $row->post_title . " " . $row->post_date . "<br/>";
+    echo $row->nbPost . " " . $row->datePost . "<br/>";
 }
 ?>
 </div>
