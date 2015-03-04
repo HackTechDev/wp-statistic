@@ -1,6 +1,6 @@
 #!/bin/sh
 
 cd ..
-rm WPStatistic.tar.gz
-tar cvfz WPStatistic.tar.gz WordpressStatistic
-cd WordpressStatistic
+rm wp-statistic.tar.gz
+tar cvfz wp-statistic.tar.gz wp-statistic
+cd wp-statistic
