@@ -12,7 +12,7 @@ function displayStatistic() {
 <link type="text/css" href="<?php echo WP_PLUGIN_URL; ?>/css/style-admin.css" rel="stylesheet" />
 <div class="wrap">
 <h2>Post Statistic</h2>
-    <table border="1">
+    <table style="border=none;" cellspacing="0" cellpadding="0">
 <?php
 $tempYear = 0;
 $tempMonth = 0;
@@ -21,38 +21,58 @@ $totalPostMonth = 0;
 
 $countPost = 0;
 
-foreach ($rows as $row ){
+$yearChange = 0;
+
+$tdYearBackgroundColor = "#C0C0C0";
+$tdYearPostBackgroundColor = "#D3D3D3";
+
+foreach ( $rows as $row ){
     $line = "<tr>";
     list($day, $month, $year) = explode("/", $row->datePost);
 
-    if( $year != $tempYear) {
-        $line .= "<td>$year</td>"; 
+    if( $year != $tempYear ) {
+
+	if( $tdYearBackgroundColor == "#D3D3D3") {
+	    $tdYearBackgroundColor = "#C0C0C0";
+	} else {
+	   $tdYearBackgroundColor = "#D3D3D3";
+	}
+
+        $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'>$year</td>"; 
     } else {
-        $line .= "<td border=0></td>";
+        $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'></td>";
     }
     $tempYear = $year;
 
-    if( $month != $tempMonth) {
-        $line .= "<td>$month</td>"; 
+    if( $month != $tempMonth ) {
+        $line .= "<td style='width: 40px'>$month</td>"; 
         $displaySubTotalMonth = true;
     } else {
-        $line .= "<td border=0></td>";
+        $line .= "<td style='width: 40px'></td>";
     }
     $tempMonth = $month;
 
-    $line .= "<td>$day</td><td>";
+    $line .= "<td style='width: 40px'>$day</td><td>";
     $line .= "<b style='color:red;'>" . $row->nbPost . "</b>";
-    $line .= "</td><td></td></tr>";
+    $line .= "</td><td style='width: 40px'></td></tr>";
 
     $totalPostMonth += $row->nbPost . " " ;
 
-    if($displaySubTotalMonth == true) {
-        if ($countPost != 0 ) {
-            $totalPostMonth -= $row->nbPost;    
-            echo "<td></td> <td></td> <td></td> <td></td> <td style='color:blue;'>$totalPostMonth</td>";
+    if( $displaySubTotalMonth == true ) {
+        if ( $countPost != 0 ) {
+            $totalPostMonth -= $row->nbPost;
+
+	    $tdYearPostBackgroundColor = "#2F4F4F" ;
+	
+            echo "<td style='width: 40px;background-color: $tdYearPostBackgroundColor'> </td> 
+		  <td style='width: 40px;background-color: $tdYearPostBackgroundColor'> </td> 
+		  <td style='width: 40px;background-color: $tdYearPostBackgroundColor'> </td> 
+		  <td style='width: 40px;background-color: $tdYearPostBackgroundColor'> </td> 
+		  <td style='color: black;width: 40px;background-color: $tdYearPostBackgroundColor'>$totalPostMonth</td>";
+
             $totalPostMonth = $row->nbPost;
         }
-        echo $line;
+        echo $line; // database row / Current row
         $displaySubTotalMonth = false;
     } else {
         echo $line;
@@ -60,8 +80,12 @@ foreach ($rows as $row ){
 
     $countPost++;
 }
-//$totalPostMonth = $row->nbPost;
-echo "<td></td> <td></td> <td></td> <td></td> <td style='color:blue;'>$totalPostMonth</td>";
+echo "<td style='width: 40px;background-color: $tdYearPostBackgroundColor'> </td> 
+      <td style='width: 40px;background-color: $tdYearPostBackgroundColor'> </td> 
+      <td style='width: 40px;background-color: $tdYearPostBackgroundColor'> </td> 
+      <td style='width: 40px;background-color: $tdYearPostBackgroundColor'> </td> 
+      <td style='color: black;background-color: $tdYearPostBackgroundColor'>$totalPostMonth</td>";
+
 ?>
 </table>
 </div>
