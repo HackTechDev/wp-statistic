@@ -48,9 +48,9 @@ function wpstatistic_remove() {
 if ( is_admin() ) {
 
         function wpstatistic_menu() {
-                add_options_page('Wordpress Statistic', 'Wordpress Statistic', 'administrator', basename(__FILE__), 'wpstatistic_option');
+                add_options_page('WP-Statistic', 'WP-Statistic', 'administrator', basename(__FILE__), 'wpstatistic_option');
 
-                add_menu_page('Wordpress Statistic', 'Wordpress Statistic', 'manage_options', 'displayStatistic', 'displayStatistic');
+                add_menu_page('WP-Statistic', 'WP-Statistic', 'manage_options', 'displayStatistic', 'displayStatistic');
 
         }
 
