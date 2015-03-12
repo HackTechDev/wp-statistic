@@ -40,7 +40,11 @@ foreach ( $rows as $row ){
 
         $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'>$year</td>"; 
     } else {
-        $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'></td>";
+        if( $month != $tempMonth ) {
+            $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'>$year</td>";
+        } else {
+            $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'></td>";
+        }
     }
     $tempYear = $year;
 
