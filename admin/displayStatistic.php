@@ -38,10 +38,10 @@ foreach ( $rows as $row ){
 	   $tdYearBackgroundColor = "#D3D3D3";
 	}
 
-        $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'>$year</td>"; 
+        $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'><a target='_blank' href='/statistique/?yearstat=$year'>$year</a></td>"; 
     } else {
         if( $month != $tempMonth ) {
-            $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'>$year</td>";
+            $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'><a target='_blank' href='/statistique/?yearstat=$year'>$year</a></td>";
         } else {
             $line .= "<td style='width: 40px;background-color: $tdYearBackgroundColor'></td>";
         }
@@ -49,15 +49,15 @@ foreach ( $rows as $row ){
     $tempYear = $year;
 
     if( $month != $tempMonth ) {
-        $line .= "<td style='width: 40px'>$month</td>"; 
+        $line .= "<td style='width: 40px'><a target='_blank' href='/statistique/?monthstat=$month&yearstat=$year'>$month</a></td>"; 
         $displaySubTotalMonth = true;
     } else {
         $line .= "<td style='width: 40px'></td>";
     }
     $tempMonth = $month;
 
-    $line .= "<td style='width: 40px'>$day</td><td>";
-    $line .= "<b style='color:red;'><a href='/statistique/?daystat=$day&monthstat=$month&yearstat=$year'>" . $row->nbPost . "</a></b>";
+    $line .= "<td style='width: 40px'><a target='_blank' href='/statistique/?daystat=$day&monthstat=$month&yearstat=$year'>$day</a></td><td>";
+    $line .= "<b style='color:red;'>" . $row->nbPost . "</b>";
     $line .= "</td><td style='width: 40px'></td></tr>";
 
     $totalPostMonth += $row->nbPost . " " ;
