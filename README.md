@@ -7,3 +7,6 @@ Version: 0.1
 Author: Le Sanglier des Ardennes  
 Author URI: http://rockstarninja.info/  
 License: GPL2 license  
+
+- Copy the "Page statistic" page in your active theme. 
+- Create a page with the "Page statistic" page.  

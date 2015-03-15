@@ -57,7 +57,7 @@ foreach ( $rows as $row ){
     $tempMonth = $month;
 
     $line .= "<td style='width: 40px'>$day</td><td>";
-    $line .= "<b style='color:red;'>" . $row->nbPost . "</b>";
+    $line .= "<b style='color:red;'><a href='/statistique/?daystat=$day&monthstat=$month&yearstat=$year'>" . $row->nbPost . "</a></b>";
     $line .= "</td><td style='width: 40px'></td></tr>";
 
     $totalPostMonth += $row->nbPost . " " ;

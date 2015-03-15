@@ -81,7 +81,16 @@ function wpstatistic_settings_link($links) {
 $plugin = plugin_basename(__FILE__); 
 add_filter("plugin_action_links_$plugin", 'wpstatistic_settings_link' );
 
+// Add a custom query vars
+function add_query_vars_filter( $vars ){
+  $vars[] = "daystat";
+  $vars[] = "monthstat";
+  $vars[] = "yearstat";
+  return $vars;
+}
+add_filter( 'query_vars', 'add_query_vars_filter' );
+
 
 define('ROOTDIR', plugin_dir_path(__FILE__));
- require_once(ROOTDIR . 'admin/displayStatistic.php');
+require_once(ROOTDIR . 'admin/displayStatistic.php');
 ?>
